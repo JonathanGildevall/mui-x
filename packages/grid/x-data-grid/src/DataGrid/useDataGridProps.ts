@@ -30,8 +30,6 @@ const DATA_GRID_FORCED_PROPS: { [key in DataGridForcedPropsKey]?: DataGridProces
   signature: 'DataGrid',
 };
 
-export const MAX_PAGE_SIZE = 100;
-
 /**
  * The default values of `DataGridPropsWithDefaultValues` to inject in the props of DataGrid.
  */
@@ -79,10 +77,6 @@ export const DATA_GRID_PROPS_DEFAULT_VALUES: DataGridPropsWithDefaultValues = {
 };
 
 export const useDataGridProps = <R extends GridValidRowModel>(inProps: DataGridProps<R>) => {
-  if (inProps.pageSize! > MAX_PAGE_SIZE) {
-    throw new Error(`'props.pageSize' cannot exceed 100 in DataGrid.`);
-  }
-
   const themedProps = useThemeProps({ props: inProps, name: 'MuiDataGrid' });
 
   const localeText = React.useMemo(
